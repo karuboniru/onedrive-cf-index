@@ -73,7 +73,7 @@ async function handleRequest(request) {
 
   const rawFile = searchParams.get('raw') !== null
   const thumbnail = config.thumbnail ? searchParams.get('thumbnail') : false
-  const proxied = config.proxyDownload ? searchParams.get('proxied') !== null : false
+  const proxied = config.alwaysProxyDownload || (config.proxyDownload ? searchParams.get('proxied') !== null : false)
 
   if (thumbnail) {
     const url = `${config.apiEndpoint.graph}${config.baseResource}/root${wrapPathName(
@@ -137,7 +137,7 @@ async function handleRequest(request) {
 
       // Add preview by CloudFlare worker cache feature
       let cacheUrl = null
-      if (config.cache.enable && config.cache.previewCache && data.size < config.cache.chunkedCacheLimit) {
+      if (config.alwaysProxyDownload || (config.cache.enable && config.cache.previewCache && data.size < config.cache.chunkedCacheLimit)) {
         cacheUrl = request.url + '?proxied&raw'
       }
 

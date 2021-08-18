@@ -18,7 +18,7 @@ const config = {
   },
 
   refresh_token: REFRESH_TOKEN,
-  client_id: '6600e358-9328-4050-af82-0af9cdde796b',
+  client_id: '9af7dabd-c79f-43f2-91be-a1a3fc771a22',
   client_secret: CLIENT_SECRET,
 
   /**
@@ -29,7 +29,7 @@ const config = {
   /**
    * The base path for indexing, all files and subfolders are public by this tool. For example: `/Public`.
    */
-  base: '/Public',
+  base: '/',
 
   /**
    * Feature: Pagination when a folder has multiple(>${top}) files
@@ -62,8 +62,8 @@ const config = {
     enable: true,
     entireFileCacheLimit: 10000000, // 10MB
     chunkedCacheLimit: 100000000, // 100MB
-    previewCache: false,
-    paths: ['/🥟%20Some%20test%20files/Previews']
+    previewCache: true,
+    paths: ['/']
   },
 
   /**
@@ -91,7 +91,8 @@ const config = {
    * Example: https://storage.spencerwoo.com/🥟%20Some%20test%20files/Previews/eb37c02438f.png?raw&proxied
    * You can also embed this link (url encoded) directly inside Markdown or HTML.
    */
-  proxyDownload: true
+  proxyDownload: true,
+  alwaysProxyDownload: true
 }
 
 // IIFE to set apiEndpoint & baseResource

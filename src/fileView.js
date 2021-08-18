@@ -123,17 +123,10 @@ function renderImage(file) {
  * @param {string} fileExt The file extension parsed
  */
 function renderVideoPlayer(file, fileExt) {
-  return `<div id="dplayer"></div>
-          <script>
-          dp = new DPlayer({
-            container: document.getElementById('dplayer'),
-            theme: '#0070f3',
-            video: {
-              url: '${file['@microsoft.graph.downloadUrl']}',
-              type: '${fileExt}'
-            }
-          })
-          </script>`
+  return `<div style="width: 100%; height: 100%;" class="absolute top-0 left-0 w-full h-full">
+          <video src="${file['@microsoft.graph.downloadUrl']}" style="width: 100%; height: 100%;" preload="auto" controls="">
+          </video>
+          </div>`
 }
 
 /**
@@ -142,17 +135,10 @@ function renderVideoPlayer(file, fileExt) {
  * @param {Object} file Object representing the audio to preview
  */
 function renderAudioPlayer(file) {
-  return `<div id="aplayer"></div>
-          <script>
-          ap = new APlayer({
-            container: document.getElementById('aplayer'),
-            theme: '#0070f3',
-            audio: [{
-              name: '${file.name}',
-              url: '${file['@microsoft.graph.downloadUrl']}'
-            }]
-          })
-          </script>`
+  return `<div style="width: 100%; height: 100%;" class="absolute top-0 left-0 w-full h-full">
+          <audio src="${file['@microsoft.graph.downloadUrl']}" style="width: 100%; height: 100%;" preload="auto" controls="">
+          </audio>
+          </div>`
 }
 
 /**
